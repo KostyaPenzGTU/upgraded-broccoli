@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин</title>
+    <!-- Подключение Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Пользовательские стили */
+        .header {
+            background-color: #ff0000; /* Красный цвет заголовка */
+            color: white; /* Белый текст */
+            text-align: center; /* Центрирование текста */
+            padding: 20px 0; /* Отступы сверху и снизу */
+        }
+
+        .main-content {
+            background-color: #ffcccc; /* Светло-красный цвет основной части */
+            padding: 20px; /* Внутренние отступы */
+            margin-top: 20px; /* Отступ сверху */
+            border-radius: 5px; /* Скругленные углы */
+        }
+
+        .guide {
+            background-color: #e60000; /* Алый цвет заключительной части */
+            color: white; /* Белый текст */
+            text-align: center; /* Центрирование текста */
+            padding: 20px 0; /* Отступы сверху и снизу */
+            margin-top: 20px; /* Отступ сверху */
+        }
+
+        .image-text-row {
+            display: flex;
+            align-items: center; /* Центрирование по вертикали */
+            margin-bottom: 20px;
+        }
+
+        .image-text-row img {
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .image-text-row .col-md-6 {
+            display: flex;
+            justify-content: center; /* Центрирование изображения по горизонтали */
+            align-items: center; /* Центрирование изображения по вертикали */
+        }
+
+        /* Адаптация для маленьких экранов */
+        @media (max-width: 576px) {
+            .main-content {
+                width: 100%; /* Основной блок занимает всю ширину */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Заголовок -->
+    <div class="header">
+        <h1>Вред никотиносодержащих продуктов</h1>
+    </div>
+
+    <!-- Основная часть -->
+    <div class="container">
+        <!-- Блок 1: текст + место слева -->
+        <div class="image-text-row">
+            <div class="col-md-6">
+                <!-- Картинка для "Сигареты" -->
+                <img src="maxresdefault.jpg" alt="Сигареты" class="img-fluid rounded">
+            </div>
+            <div class="main-content col-md-6">
+                <h2>Сигареты</h2>
+                <ul>
+                    <li>Сигареты содержат более 7,000 химических веществ, из которых около 70 являются канцерогенами.</li>
+                    <li>Повышают риск рака легких, горла, рта, желудка и других органов.</li>
+                    <li>Вызывают хронические заболевания, включая сердечно-сосудистые и респираторные болезни.</li>
+                    <li>Приводят к зависимости от никотина.</li>
+                    <li>Пассивное курение также опасно: вредные вещества вдыхают окружающие.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Блок 2: текст + место справа -->
+        <div class="image-text-row">
+            <div class="main-content col-md-6">
+                <h2>Вейпы (электронные сигареты)</h2>
+                <ul>
+                    <li>Вейпы используются для нагрева жидкости, содержащей никотин, ароматизаторы и другие химические вещества.</li>
+                    <li>Меньше канцерогенов, чем в сигаретах, но риск для легких остается значительным из-за токсичных веществ, например, формальдегида.</li>
+                    <li>Вызывают никотиновую зависимость, особенно среди молодежи.</li>
+                    <li>Длительное воздействие на здоровье еще не изучено, но есть риск воспаления дыхательных путей и повреждения легочной ткани.</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <!-- Картинка для "Вейпы" -->
+                <img src="vep.jpg" alt="Вейпы" class="img-fluid rounded">
+            </div>
+        </div>
+
+        <!-- Блок 3: текст + место слева -->
+        <div class="image-text-row">
+            <div class="col-md-6">
+                <!-- Картинка для "Одноразовые электронные сигареты" -->
+                <img src="sigg.jpg" alt="Одноразовые электронные сигареты" class="img-fluid rounded">
+            </div>
+            <div class="main-content col-md-6">
+                <h2>Одноразовые электронные сигареты</h2>
+                <ul>
+                    <li>Одноразовые устройства популярны из-за доступности и вкусовых добавок.</li>
+                    <li>Высокое содержание никотина (часто до 50 мг/мл), что вызывает быструю зависимость.</li>
+                    <li>Химические добавки и ароматизаторы могут быть токсичны для дыхательной системы.</li>
+                    <li>Одноразовые устройства часто используются подростками, что увеличивает риск ранней зависимости и длительных проблем со здоровьем.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Заключительная часть "Руководство" -->
+    <div class="guide">
+        <h2>Руководство</h2>
+        <p>Контактная информация: Телефон: 112, Email: MORG@shop.com</p>
+    </div>
+
+    <!-- Подключение JS-файлов Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

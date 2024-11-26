@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа 3</title>
+    <style>
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        input {
+            width: 80px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .grade-buttons button {
+            margin: 5px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .grade-buttons button:hover {
+            background-color: #0056b3;
+        }
+
+        .text-input {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .text-input input {
+            padding: 5px;
+            width: 200px;
+        }
+
+        .average-score {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Оценки студентов</h1>
+        
+        <!-- Таблица с именами студентов и полями для оценок -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Студент</th>
+                    <th>Оценка</th>
+                    <th>Выставить оценку</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Студент 1</td>
+                    <td><input type="number" id="student1" class="grade-input" min="0" max="5" readonly></td>
+                    <td class="grade-buttons">
+                        <button onclick="setGrade(1, 1)">1</button>
+                        <button onclick="setGrade(1, 2)">2</button>
+                        <button onclick="setGrade(1, 3)">3</button>
+                        <button onclick="setGrade(1, 4)">4</button>
+                        <button onclick="setGrade(1, 5)">5</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Студент 2</td>
+                    <td><input type="number" id="student2" class="grade-input" min="0" max="5" readonly></td>
+                    <td class="grade-buttons">
+                        <button onclick="setGrade(2, 1)">1</button>
+                        <button onclick="setGrade(2, 2)">2</button>
+                        <button onclick="setGrade(2, 3)">3</button>
+                        <button onclick="setGrade(2, 4)">4</button>
+                        <button onclick="setGrade(2, 5)">5</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Студент 3</td>
+                    <td><input type="number" id="student3" class="grade-input" min="0" max="5" readonly></td>
+                    <td class="grade-buttons">
+                        <button onclick="setGrade(3, 1)">1</button>
+                        <button onclick="setGrade(3, 2)">2</button>
+                        <button onclick="setGrade(3, 3)">3</button>
+                        <button onclick="setGrade(3, 4)">4</button>
+                        <button onclick="setGrade(3, 5)">5</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Студент 4</td>
+                    <td><input type="number" id="student4" class="grade-input" min="0" max="5" readonly></td>
+                    <td class="grade-buttons">
+                        <button onclick="setGrade(4, 1)">1</button>
+                        <button onclick="setGrade(4, 2)">2</button>
+                        <button onclick="setGrade(4, 3)">3</button>
+                        <button onclick="setGrade(4, 4)">4</button>
+                        <button onclick="setGrade(4, 5)">5</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="buttons">
+            <!-- Кнопки действия -->
+            <button onclick="clearFields()">Очистить поля</button>
+        </div>
+
+        <div class="average-score">
+            <p>Средний балл: <span id="averageResult">0</span></p>
+        </div>
+
+        <div class="text-input">
+            <label for="textInput">Введите текст:</label>
+            <input type="text" id="textInput">
+            <button onclick="showAlert()">Показать текст</button>
+        </div>
+    </div>
+
+    <script>
+        // Функция для выставления оценки
+        function setGrade(studentId, grade) {
+            const studentInput = document.getElementById('student' + studentId);
+            studentInput.value = grade;
+            calculateAverage();  // Пересчитываем средний балл после выставления оценки
+        }
+
+        // Функция для очистки всех полей ввода
+        function clearFields() {
+            const inputs = document.querySelectorAll('.grade-input');
+            inputs.forEach(input => {
+                input.value = "";
+            });
+            document.getElementById('averageResult').textContent = "0";  // Очистка среднего балла
+        }
+
+        // Функция для вычисления среднего балла
+        function calculateAverage() {
+            const students = ['student1', 'student2', 'student3', 'student4'];
+            let sum = 0;
+            let count = 0;
+
+            students.forEach(student => {
+                const input = document.getElementById(student);
+                if (input.value !== "") {
+                    sum += parseFloat(input.value);
+                    count++;
+                }
+            });
+
+            if (count > 0) {
+                const average = sum / count;
+                document.getElementById('averageResult').textContent = average.toFixed(2);
+            } else {
+                document.getElementById('averageResult').textContent = "0";
+            }
+        }
+
+        // Функция для вывода текста из инпута
+        function showAlert() {
+            const textInput = document.getElementById('textInput').value;
+            if (textInput === "") {
+                alert("Вы ничего не ввели в поле.");
+            } else {
+                alert("Вы ввели: '" + textInput + "'");
+            }
+        }
+    </script>
+
+</body>
+</html>
